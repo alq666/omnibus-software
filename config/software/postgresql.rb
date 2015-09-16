@@ -22,6 +22,7 @@ dependency "openssl"
 dependency "libedit"
 dependency "ncurses"
 dependency "libossp-uuid"
+dependency "systemtap"
 
 version "9.1.9" do
   source md5: "6b5ea53dde48fcd79acfc8c196b83535"
@@ -63,6 +64,10 @@ version "9.4.1" do
   source md5: "2cf30f50099ff1109d0aa517408f8eff"
 end
 
+version "9.4.4" do
+  source md5: "1fe952c44ed26d7e6a335cf991a9c1c6"
+end
+
 source url: "https://ftp.postgresql.org/pub/source/v#{version}/postgresql-#{version}.tar.bz2"
 
 relative_path "postgresql-#{version}"
@@ -75,6 +80,7 @@ build do
           " --with-libedit-preferred" \
           " --with-openssl" \
           " --with-ossp-uuid" \
+	  " --with-dtrace" \
           " --with-includes=#{install_dir}/embedded/include" \
           " --with-libraries=#{install_dir}/embedded/lib", env: env
 
